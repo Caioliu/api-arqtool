@@ -158,6 +158,7 @@ namespace caiobadev_api_arqtool.Controllers {
 
         [HttpPost("Cadastro/Especifico")]
         [Authorize(Roles = "superadmin,admin")]
+        //[AllowAnonymous]
         public async Task<ActionResult> CadastrarUsuario([FromBody] UsuarioCadastro usuarioCadastro) {
             FluentValidation.Results.ValidationResult validationResult = await _validator.ValidateAsync(usuarioCadastro);
 
