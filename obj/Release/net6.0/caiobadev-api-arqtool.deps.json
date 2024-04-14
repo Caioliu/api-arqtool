@@ -10,6 +10,7 @@
         "dependencies": {
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
+          "FluentEmail.SendGrid": "3.0.2",
           "FluentValidation": "11.9.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.28",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.28",
@@ -44,6 +45,29 @@
           "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {
             "assemblyVersion": "12.0.0.0",
             "fileVersion": "12.0.1.0"
+          }
+        }
+      },
+      "FluentEmail.Core/3.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentEmail.Core.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
+          }
+        }
+      },
+      "FluentEmail.SendGrid/3.0.2": {
+        "dependencies": {
+          "FluentEmail.Core": "3.0.2",
+          "SendGrid": "9.22.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentEmail.SendGrid.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
           }
         }
       },
@@ -343,6 +367,26 @@
           }
         }
       },
+      "SendGrid/9.22.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "starkbank-ecdsa": "1.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SendGrid.dll": {
+            "assemblyVersion": "9.22.0.0",
+            "fileVersion": "9.22.0.0"
+          }
+        }
+      },
+      "starkbank-ecdsa/1.2.0": {
+        "runtime": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.5.0": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
@@ -447,6 +491,20 @@
       "sha512": "sha512-+g/K+Vpe3gGMKGzjslMOdqNlkikScDjWfVvmWTayrDHaG/n2pPmFBMa+jKX1r/h6BDGFdkyRjAuhFE3ykW+r1g==",
       "path": "automapper.extensions.microsoft.dependencyinjection/12.0.1",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512"
+    },
+    "FluentEmail.Core/3.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uQFFbJgMhhCFUti7pfMi429fMNi7fLGMj+7uDtD7POlQzLxlhXJ6tmt4Y1SI51sZsA36GO5b7+o29eY/dKiICQ==",
+      "path": "fluentemail.core/3.0.2",
+      "hashPath": "fluentemail.core.3.0.2.nupkg.sha512"
+    },
+    "FluentEmail.SendGrid/3.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R2cbz3C2s/bxle1X5aHzz6/vpI1gflD7j78I78wFETUq7wrT4hIhTeOABK7rr7Lca3irnGdXCx2S5jgXiPiWcw==",
+      "path": "fluentemail.sendgrid/3.0.2",
+      "hashPath": "fluentemail.sendgrid.3.0.2.nupkg.sha512"
     },
     "FluentValidation/11.9.0": {
       "type": "package",
@@ -706,6 +764,20 @@
       "sha512": "sha512-jEa462J9uNlmpX7qLXpJVOInonwF6E0bFbij6hboTsQJK7thfazh8xwF8fe79kUrp4+6e5A13KT5aLBIkt7RTg==",
       "path": "pomelo.entityframeworkcore.mysql/6.0.3",
       "hashPath": "pomelo.entityframeworkcore.mysql.6.0.3.nupkg.sha512"
+    },
+    "SendGrid/9.22.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5vXkfOqPhi6W5/tEmRcTVJakT69SXiCGqVRERYF4ZAtJ4alylzlOqin6w8Xrog0Brf3RL+4BKXI+CwKbFLtteA==",
+      "path": "sendgrid/9.22.0",
+      "hashPath": "sendgrid.9.22.0.nupkg.sha512"
+    },
+    "starkbank-ecdsa/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hP53QPYOOEIR44EK9phz+DYliM6DEieDZxpb8GZzE+++qyrWqUscKcyHCC6L9yu/ehllYtqxtT4qrjWDsuQlUQ==",
+      "path": "starkbank-ecdsa/1.2.0",
+      "hashPath": "starkbank-ecdsa.1.2.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.5.0": {
       "type": "package",

@@ -3,6 +3,7 @@ using caiobadev_api_arqtool.Identity.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -112,6 +113,35 @@ namespace caiobadev_api_arqtool.Identity.Services {
             }
         }
 
+        public async Task<bool> RedefinirSenha(Usuario usuario, string novaSenha) {
+            var token = await _userManager.GeneratePasswordResetTokenAsync(usuario);
+            var result = await _userManager.ResetPasswordAsync(usuario, token, novaSenha);
+
+            if (result.Succeeded) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        //public async Task<string> GerarTokenRedefinicaoSenha(Usuario usuario) {
+        //    // Gere o token de redefinição de senha para o usuário
+        //    var token = await _userManager.GeneratePasswordResetTokenAsync(usuario);
+        //    return token;
+        //}
+
+        //public async Task<bool> AtualizarSenhaComToken(Usuario usuario, string token, string novaSenha) {
+        //    // Verifique se o token é válido para o usuário
+        //    var resultadoVerificacao = await _userManager.ResetPasswordAsync(usuario, token, novaSenha);
+        //    if (!resultadoVerificacao.Succeeded) {
+        //        // O token é inválido ou expirou
+        //        return false;
+        //    }
+
+        //    // Atualize a senha do usuário
+        //    var resultadoAtualizacao = await _userManager.ChangePasswordAsync(usuario, null, novaSenha);
+        //    return resultadoAtualizacao.Succeeded;
+        //}
 
 
     }

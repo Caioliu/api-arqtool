@@ -57,3 +57,7 @@ C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Debu
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Debug\net6.0\FluentEmail.Core.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Debug\net6.0\FluentEmail.SendGrid.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Debug\net6.0\SendGrid.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Debug\net6.0\StarkbankEcdsa.dll

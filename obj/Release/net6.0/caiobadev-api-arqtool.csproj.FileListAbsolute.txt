@@ -57,3 +57,7 @@ C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Rele
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\caiobadev-api-arqtool.pdb
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\caiobadev-api-arqtool.genruntimeconfig.cache
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\ref\caiobadev-api-arqtool.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Release\net6.0\FluentEmail.Core.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Release\net6.0\FluentEmail.SendGrid.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Release\net6.0\SendGrid.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Release\net6.0\StarkbankEcdsa.dll

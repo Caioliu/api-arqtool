@@ -26,22 +26,22 @@ namespace caiobadev_api_arqtool.Controllers {
 
         [HttpPost("Login")]
         [AllowAnonymous]
-        public async Task<ActionResult> Login([FromBody] AutenticacaoViewModel autenticacaoViewModel) 
-        {
+        public async Task<IActionResult> Login([FromBody] AutenticacaoViewModel autenticacaoViewModel) {
             FluentValidation.Results.ValidationResult validationResult = await _validator.ValidateAsync(autenticacaoViewModel);
 
             if (!validationResult.IsValid) {
-                return BadRequest(validationResult.Errors);
+                return BadRequest(new { errors = validationResult.Errors });
             }
 
             var result = await _autenticacaoService.AutenticarUsuario(autenticacaoViewModel.Email, autenticacaoViewModel.Senha);
             if (result) {
                 var perfil = _autenticacaoService.GetPerfilUsuario(autenticacaoViewModel.Email);
-                return Ok(GeraToken(autenticacaoViewModel, perfil.Result.ElementAt(0)));
+                return Ok(new { token = GeraToken(autenticacaoViewModel, perfil.Result.ElementAt(0)) });
             } else {
-                return BadRequest("Tentativa login inválida.");
+                return BadRequest(new { message = "Tentativa login inválida." });
             }
         }
+
 
         private UsuarioToken GeraToken(AutenticacaoViewModel autenticacaoViewModel, string perfil) {
             //define declarações do usuário

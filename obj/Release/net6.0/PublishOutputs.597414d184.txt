@@ -6,6 +6,8 @@ C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Rele
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\caiobadev-api-arqtool.pdb
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\AutoMapper.dll
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\FluentEmail.Core.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\FluentEmail.SendGrid.dll
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\FluentValidation.dll
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -28,6 +30,8 @@ C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Rele
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\MySqlConnector.dll
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\SendGrid.dll
+C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\StarkbankEcdsa.dll
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

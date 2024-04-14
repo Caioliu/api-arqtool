@@ -35,11 +35,11 @@ namespace caiobadev_api_arqtool.Controllers {
 
         [HttpGet("Lista")]
         [Authorize(Roles = "superadmin")]
-        public async Task<ActionResult<IEnumerable<UsuarioCadastro>>> Get() {
+        public async Task<IActionResult> Get() {
             var usuarios = await _usuarioService.GetAll();
 
             if (!usuarios.Any()) {
-                return NotFound("Usuários não encontrados.");
+                return NotFound(new { message = "Usuários não encontrados." });
             }
 
             var usuariosInfo = new List<UsuarioInfo>();
@@ -58,13 +58,14 @@ namespace caiobadev_api_arqtool.Controllers {
             return Ok(usuariosInfo);
         }
 
+
         [HttpGet("Cliente/Lista")]
-        [Authorize(Roles = "admin,superadmin")]
-        public async Task<ActionResult<IEnumerable<UsuarioCadastro>>> GetClientes() {
+        [Authorize]
+        public async Task<IActionResult> GetClientes() {
             var usuarios = await _usuarioService.GetByPerfilName("cliente");
 
             if (!usuarios.Any()) {
-                return NotFound("Usuários não encontrados.");
+                return NotFound(new { message = "Usuários não encontrados." });
             }
 
             var usuariosIdent = new List<UsuarioInfo>();
@@ -81,13 +82,14 @@ namespace caiobadev_api_arqtool.Controllers {
             return Ok(usuariosIdent);
         }
 
+
         [HttpGet("{id}")]
         [Authorize(Roles = "admin,superadmin")]
-        public async Task<ActionResult<UsuarioInfo>> Get(string id) {
+        public async Task<IActionResult> Get(string id) {
             var usuario = await _usuarioService.GetById(id);
 
             if (usuario == null) {
-                return NotFound("Usuário não encontrado.");
+                return NotFound(new { message = "Usuário não encontrado." });
             }
 
             var usuarioInfo = new UsuarioInfo() {
@@ -102,13 +104,14 @@ namespace caiobadev_api_arqtool.Controllers {
             return Ok(usuarioInfo);
         }
 
+
         [HttpGet("Informacao")]
         [Authorize]
-        public async Task<ActionResult<UsuarioInfo>> GetUsuario() {
+        public async Task<IActionResult> GetUsuario() {
             var usuario = await _usuarioService.GetById(_usuarioLogado.Id);
 
             if (usuario == null) {
-                return NotFound("Usuário não encontrado.");
+                return NotFound(new { message = "Usuário não encontrado." });
             }
 
             var usuarioInfo = new UsuarioInfo() {
@@ -124,17 +127,18 @@ namespace caiobadev_api_arqtool.Controllers {
             return Ok(usuarioInfo);
         }
 
+
         [HttpPost("Cadastro/Cliente")]
         [AllowAnonymous]
         public async Task<ActionResult> CadastrarUsuarioCliente([FromBody] UsuarioCadastro usuarioCadastro) {
             FluentValidation.Results.ValidationResult validationResult = await _validator.ValidateAsync(usuarioCadastro);
 
             if (!validationResult.IsValid) {
-                return BadRequest(validationResult.Errors);
+                return BadRequest(new { error = validationResult.Errors });
             }
 
             if (await _usuarioService.VerificaUsuarioCadastrado(usuarioCadastro.Email)) {
-                return BadRequest($"Já existe um e-mail {usuarioCadastro.Email} cadastrdo.");
+                return BadRequest(new { error = $"Já existe um e-mail {usuarioCadastro.Email} cadastrado." });
             }
 
             var usuario = new Usuario {
@@ -150,11 +154,11 @@ namespace caiobadev_api_arqtool.Controllers {
 
             var result = await _usuarioService.InserirUsuarioCliente(usuario, usuarioCadastro.Senha);
 
-            if (!result) return BadRequest("Erro ao criar usuário.");
+            if (!result) return BadRequest(new { error = "Erro ao criar usuário." });
 
-            return Ok("Usuário criado com sucesso.");
-
+            return Ok(new { message = "Usuário criado com sucesso." });
         }
+
 
         [HttpPost("Cadastro/Especifico")]
         [Authorize(Roles = "superadmin,admin")]
@@ -163,11 +167,11 @@ namespace caiobadev_api_arqtool.Controllers {
             FluentValidation.Results.ValidationResult validationResult = await _validator.ValidateAsync(usuarioCadastro);
 
             if (!validationResult.IsValid) {
-                return BadRequest(validationResult.Errors);
+                return BadRequest(new { error = validationResult.Errors });
             }
 
             if (await _usuarioService.VerificaUsuarioCadastrado(usuarioCadastro.Email)) {
-                return BadRequest($"Já existe um e-mail {usuarioCadastro.Email} cadastrdo.");
+                return BadRequest(new { error = $"Já existe um e-mail {usuarioCadastro.Email} cadastrado." });
             }
 
             var usuario = new Usuario {
@@ -183,10 +187,9 @@ namespace caiobadev_api_arqtool.Controllers {
 
             var result = await _usuarioService.InserirUsuario(usuario, usuarioCadastro.Perfil, usuarioCadastro.Senha);
 
-            if (!result) return BadRequest("Erro ao criar usuário.");
+            if (!result) return BadRequest(new { error = "Erro ao criar usuário." });
 
-            return Ok("Usuário criado com sucesso.");
-
+            return Ok(new { message = "Usuário criado com sucesso." });
         }
 
         [HttpPut("{id}")]
@@ -196,17 +199,17 @@ namespace caiobadev_api_arqtool.Controllers {
             FluentValidation.Results.ValidationResult validationResult = await _validatorEdit.ValidateAsync(editUsuarioViewModel);
 
             if (!validationResult.IsValid) {
-                return BadRequest(validationResult.Errors);
+                return BadRequest(new { error = validationResult.Errors });
             }
 
             if (id != editUsuarioViewModel.Id) {
-                return BadRequest($"O id {id} informado não corresponde ao id do usuário que se deseja alterar.");
+                return BadRequest(new { error = $"O id {id} informado não corresponde ao id do usuário que se deseja alterar." });
             }
 
             var usuario = await _usuarioService.GetById(id);
 
             if (usuario == null) {
-                return NotFound("Usuário não encontrado.");
+                return NotFound(new { error = "Usuário não encontrado." });
             }
 
             usuario.Nome = editUsuarioViewModel.Nome;
@@ -214,9 +217,46 @@ namespace caiobadev_api_arqtool.Controllers {
             usuario.PhoneNumber = editUsuarioViewModel.Telefone;
             usuario.DataNascimento = editUsuarioViewModel.DataNascimento.Date;
 
-            await _usuarioService.Update(usuario);
+            var result = await _usuarioService.Update(usuario);
 
-            return Ok(usuario);
+            if (!result) return BadRequest(new { error = "Erro ao atualizar usuário." });
+
+            return Ok(new { message = "Usuário atualizado com sucesso.", usuario });
+        }
+
+        [HttpPost("RecuperarSenha")]
+        [AllowAnonymous]
+        public async Task<ActionResult> Put([FromBody] RecuperarSenhaViewModel recuperarSenhaViewModel) {
+            try {
+                // Verifica se as senhas digitadas são iguais.
+                if (recuperarSenhaViewModel.NovaSenha != recuperarSenhaViewModel.ConfirmacaoNovaSenha) {
+                    return BadRequest(new { error = "As senhas não coincidem." });
+                }
+
+                // Busca o usuário pelo e-mail
+                var usuario = await _usuarioService.GetByEmail(recuperarSenhaViewModel.Email);
+                if (usuario == null) {
+                    return BadRequest(new { error = "Dados do usuário inválidos." });
+                }
+
+                // Verifica se os dados do usuário batem com os dados informados
+                if (usuario.Email != recuperarSenhaViewModel.Email ||
+                    usuario.PhoneNumber != recuperarSenhaViewModel.Telefone ||
+                    usuario.DataNascimento.Date != recuperarSenhaViewModel.DataNascimento.Date) {
+                    return BadRequest(new { error = "Dados do usuário inválidos." });
+                }
+
+                // Se os dados estiverem corretos, atualize a senha
+                var resultado = await _usuarioService.RedefinirSenha(usuario, recuperarSenhaViewModel.NovaSenha);
+
+                if (resultado) {
+                    return Ok(new { message = "Senha atualizada com sucesso." });
+                } else {
+                    return BadRequest(new { error = "Falha ao Atualizar a Senha." });
+                }
+            } catch (Exception ex) {
+                return StatusCode(500, new { error = $"Erro interno: {ex.Message}" });
+            }
         }
 
     }

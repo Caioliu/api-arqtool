@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[12.0.1, )"
             },
+            "FluentEmail.SendGrid": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.9.0, )"
