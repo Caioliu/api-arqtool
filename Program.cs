@@ -13,22 +13,31 @@ using System.Text.Json.Serialization;
 using caiobadev_api_arqtool.ViewModels;
 using caiobadev_apiconcretapp1.ViewModelsValidator;
 using FluentValidation;
+using caiobadev_api_arqtool.Services.Interfaces;
+using caiobadev_api_arqtool.Services;
+using AutoMapper;
+using caiobadev_api_arqtool.DTOs.Mappings;
+using caiobadev_gmcapi.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IDespesaMensalService, DespesaMensalService>();
 
-builder.Services.AddScoped<IValidator<AutenticacaoViewModel>, AutenticacaoViewModelValidator>();
-builder.Services.AddScoped<IValidator<UsuarioCadastro>, UsuarioCadastroValidator>();
-builder.Services.AddScoped<IValidator<EditUsuarioViewModel>, EditUsuarioViewModelValidator>();
+var mappingConfig = new MapperConfiguration(mc => {
+    mc.AddProfile(new MappingProfile());
+});
+IMapper mapper = mappingConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 builder.Services.AddControllers().AddJsonOptions(x =>
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddScoped<IUsuarioLogado, UsuarioLogado>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(c => {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiArqTool", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiGestaoEstoque", Version = "v1" });
 
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme() {
         Name = "Authorization",
@@ -59,13 +68,6 @@ builder.Services.AddDbContext<ApiArqtoolContext>(options =>
         options.UseMySql(connectionString,
                 ServerVersion.AutoDetect(connectionString)));
 
-builder.Services.AddIdentity<Usuario, Perfil>()
-                .AddEntityFrameworkStores<ApiArqtoolContext>()
-                .AddDefaultTokenProviders();
-builder.Services.AddScoped<IAutenticacaoService, AutenticacaoService>();
-builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-builder.Services.AddScoped<IGeracaoUsuariosPerfisIniciais, GeracaoUsuariosPerfisIniciais>();
-
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowAnyOrigin",
         builder => builder.AllowAnyOrigin()
@@ -73,6 +75,9 @@ builder.Services.AddCors(options => {
                           .AllowAnyHeader());
 });
 
+builder.Services.AddIdentity<Usuario, Perfil>()
+                .AddEntityFrameworkStores<ApiArqtoolContext>()
+                .AddDefaultTokenProviders();
 
 builder.Services.AddAuthentication(
     JwtBearerDefaults.AuthenticationScheme).
@@ -96,7 +101,6 @@ if (app.Environment.IsDevelopment()) {
 }
 
 app.UseHttpsRedirection();
-GeraUsuariosEPerfis(app);
 app.UseRouting();
 app.UseCors("AllowAnyOrigin");
 app.UseAuthentication();
@@ -104,11 +108,3 @@ app.UseAuthorization();
 app.MapControllers();
 app.Run();
 
-void GeraUsuariosEPerfis(IApplicationBuilder app) {
-    using (var serviceScope = app.ApplicationServices.CreateScope()) {
-        var geracaoUsuariosPerfisIniciais = serviceScope.ServiceProvider.GetService<IGeracaoUsuariosPerfisIniciais>();
-
-        geracaoUsuariosPerfisIniciais.GerarPerfis();
-        geracaoUsuariosPerfisIniciais.GerarUsuarios();
-    }
-}

@@ -1,5 +1,6 @@
 ﻿using caiobadev_api_arqtool.Identity;
 using caiobadev_api_arqtool.Identity.Services.Interfaces;
+using caiobadev_gmcapi.Identity;
 using Microsoft.AspNetCore.Identity;
 
 namespace caiobadev_api_arqtool.Identity.Services {

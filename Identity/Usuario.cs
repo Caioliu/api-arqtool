@@ -1,10 +1,8 @@
-﻿using caiobadev_originalpaineis.DTOs;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 
-namespace caiobadev_api_arqtool.Identity {
+namespace caiobadev_gmcapi.Identity {
     public class Usuario : IdentityUser {
-        public string Nome { get; set; }
-        public string Sobrenome { get; set; }
-        public DateTime DataNascimento { get; set; }
+        public DateTime dataNascimento { get; set; }
     }
 }

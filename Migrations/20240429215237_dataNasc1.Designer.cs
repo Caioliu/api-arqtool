@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using caiobadev_api_arqtool.Context;
 
@@ -10,9 +11,10 @@ using caiobadev_api_arqtool.Context;
 namespace caiobadev_api_arqtool.Migrations
 {
     [DbContext(typeof(ApiArqtoolContext))]
-    partial class ApiArqtoolContextModelSnapshot : ModelSnapshot
+    [Migration("20240429215237_dataNasc1")]
+    partial class dataNasc1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,41 +47,7 @@ namespace caiobadev_api_arqtool.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
-            modelBuilder.Entity("caiobadev_api_arqtool.Models.DespesaMensal", b =>
-                {
-                    b.Property<int>("DespesaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("GastoAnual")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<decimal>("GastoMensal")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<decimal?>("Hora")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<decimal?>("PorcentagemGastoTotal")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<Guid>("UsuarioId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<decimal?>("ValorTotal")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.HasKey("DespesaId");
-
-                    b.ToTable("DespesasMensais");
-                });
-
-            modelBuilder.Entity("caiobadev_gmcapi.Identity.Usuario", b =>
+            modelBuilder.Entity("caiobadev_api_arqtool.Identity.Usuario", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -131,9 +99,6 @@ namespace caiobadev_api_arqtool.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
 
-                    b.Property<DateTime>("dataNascimento")
-                        .HasColumnType("datetime(6)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -144,6 +109,40 @@ namespace caiobadev_api_arqtool.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("caiobadev_api_arqtool.Models.DespesaMensal", b =>
+                {
+                    b.Property<int>("DespesaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("GastoAnual")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("GastoMensal")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("Hora")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<decimal?>("PorcentagemGastoTotal")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<Guid>("UsuarioId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<decimal?>("ValorTotal")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("DespesaId");
+
+                    b.ToTable("DespesasMensais");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -259,7 +258,7 @@ namespace caiobadev_api_arqtool.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("caiobadev_gmcapi.Identity.Usuario", null)
+                    b.HasOne("caiobadev_api_arqtool.Identity.Usuario", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -268,7 +267,7 @@ namespace caiobadev_api_arqtool.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("caiobadev_gmcapi.Identity.Usuario", null)
+                    b.HasOne("caiobadev_api_arqtool.Identity.Usuario", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -283,7 +282,7 @@ namespace caiobadev_api_arqtool.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("caiobadev_gmcapi.Identity.Usuario", null)
+                    b.HasOne("caiobadev_api_arqtool.Identity.Usuario", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -292,7 +291,7 @@ namespace caiobadev_api_arqtool.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("caiobadev_gmcapi.Identity.Usuario", null)
+                    b.HasOne("caiobadev_api_arqtool.Identity.Usuario", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

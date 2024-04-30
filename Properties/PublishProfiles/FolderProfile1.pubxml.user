@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\caioa\source\repos\caiobadev-api-arqtool\caiobadev-api-arqtool\bin\Release\net6.0\publish\</_PublishTargetUrl>
-    <History>True|2024-04-14T21:52:35.6708370Z;True|2024-04-14T18:34:41.4256867-03:00;True|2024-04-13T22:50:27.6939296-03:00;True|2024-04-07T18:28:26.1450785-03:00;</History>
+    <History>True|2024-04-30T01:12:06.1838357Z;True|2024-04-29T21:59:13.8798790-03:00;True|2024-04-14T18:52:35.6708370-03:00;True|2024-04-14T18:34:41.4256867-03:00;True|2024-04-13T22:50:27.6939296-03:00;True|2024-04-07T18:28:26.1450785-03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>
