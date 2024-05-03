@@ -23,6 +23,7 @@ namespace caiobadev_api_arqtool.Controllers {
             _userManager = userManager;
         }
 
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpGet]
         public async Task<IActionResult> GetDespesasMensais() {
             try {
@@ -33,6 +34,7 @@ namespace caiobadev_api_arqtool.Controllers {
             }
         }
 
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDespesaMensal(int id) {
             try {
@@ -66,8 +68,7 @@ namespace caiobadev_api_arqtool.Controllers {
 
         }
 
-
-
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDespesaMensal(int id, DespesaMensalDto despesaMensalDto) {
             try {
@@ -89,6 +90,7 @@ namespace caiobadev_api_arqtool.Controllers {
             }
         }
 
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpPost]
         public async Task<ActionResult<IEnumerable<DespesaMensal>>> PostDespesasMensais(List<DespesaMensalDto> despesasMensaisDto) {
             try {
@@ -108,6 +110,7 @@ namespace caiobadev_api_arqtool.Controllers {
             }
         }
 
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDespesaMensal(int id) {
             try {

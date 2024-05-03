@@ -10,6 +10,7 @@ namespace caiobadev_api_arqtool.Context {
         public ApiArqtoolContext(DbContextOptions<ApiArqtoolContext> options) : base(options) { }
 
         public DbSet<DespesaMensal> DespesasMensais { get; set; }
+        public DbSet<ValorIdealHoraTrabalho> ValoresIdeaisHoraTrabalho { get; set; }
         
     }
 }

@@ -8,6 +8,7 @@ namespace caiobadev_api_arqtool.DTOs.Mappings
         public MappingProfile() 
         {
             CreateMap<DespesaMensal, DespesaMensalDto>().ReverseMap();
+            CreateMap<ValorIdealHoraTrabalho, ValorIdealHoraTrabalhoDto>().ReverseMap();
         }
         
     }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using caiobadev_api_arqtool.Context;
 
@@ -10,9 +11,10 @@ using caiobadev_api_arqtool.Context;
 namespace caiobadev_api_arqtool.Migrations
 {
     [DbContext(typeof(ApiArqtoolContext))]
-    partial class ApiArqtoolContextModelSnapshot : ModelSnapshot
+    [Migration("20240502200826_CalculoValorIdealHoraTrabalho")]
+    partial class CalculoValorIdealHoraTrabalho
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
