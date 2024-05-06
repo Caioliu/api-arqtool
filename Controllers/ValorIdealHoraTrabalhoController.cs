@@ -23,6 +23,7 @@ namespace caiobadev_api_arqtool.Controllers {
             _despesasMensaisService = despesasMensaisService;
         }
 
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpGet]
         public async Task<IActionResult> GetValorIdealHoraTrabalho() {
             try {

@@ -19,6 +19,10 @@ namespace caiobadev_api_arqtool.Services {
         public async Task<ValorIdealHoraTrabalho> ObterPorUsuarioId(string usuarioId) {
             var valorIdealHoraTrabalho = _context.ValoresIdeaisHoraTrabalho.FirstOrDefault(v => v.UsuarioId == Guid.Parse(usuarioId));
 
+            if (valorIdealHoraTrabalho == null) { 
+                return null;
+            }
+
             var despesasMensais = await _despesasMensaisService.GetDespesasMensaisPorUsuario(usuarioId);
             var despesaMensal = despesasMensais.FirstOrDefault();
 
