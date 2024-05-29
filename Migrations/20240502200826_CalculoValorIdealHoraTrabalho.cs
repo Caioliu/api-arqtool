@@ -8,15 +8,13 @@ namespace caiobadev_api_arqtool.Migrations
 {
     public partial class CalculoValorIdealHoraTrabalho : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.CreateTable(
                 name: "ValoresIdeaisHoraTrabalho",
-                columns: table => new
-                {
+                columns: table => new {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UsuarioId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FaturamentoMensalDesejado = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     ReservaFinanceira = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     TotalDespesasMensais = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
@@ -32,15 +30,12 @@ namespace caiobadev_api_arqtool.Migrations
                     PercentualCustoFerias = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     PercentualReservaFerias = table.Column<decimal>(type: "decimal(65,30)", nullable: true)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_ValoresIdeaisHoraTrabalho", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropTable(
                 name: "ValoresIdeaisHoraTrabalho");
         }

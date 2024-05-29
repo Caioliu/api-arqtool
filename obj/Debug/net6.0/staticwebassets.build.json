@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "2CVBORP+rRfZJBE2zcfrOr85eFy9qWiivJQSRl0G1bM=",
-  "Source": "caiobadev-api-arqtool",
-  "BasePath": "_content/caiobadev-api-arqtool",
+  "Hash": "M6oiS0rwqZSDXIqskBzx6YntBbE0/X7HnMC9Rt9bMhI=",
+  "Source": "api-arqtool",
+  "BasePath": "_content/api-arqtool",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

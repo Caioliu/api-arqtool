@@ -16,7 +16,7 @@ namespace caiobadev_api_arqtool.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.28")
+                .HasAnnotation("ProductVersion", "6.0.31")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("caiobadev_api_arqtool.Identity.Services.Perfil", b =>
@@ -43,6 +43,32 @@ namespace caiobadev_api_arqtool.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("caiobadev_api_arqtool.Models.Atividade", b =>
+                {
+                    b.Property<int>("AtividadeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<double>("DuracaoEmHoras")
+                        .HasColumnType("double");
+
+                    b.Property<int>("EtapaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("double");
+
+                    b.HasKey("AtividadeId");
+
+                    b.HasIndex("EtapaId");
+
+                    b.ToTable("Atividades");
                 });
 
             modelBuilder.Entity("caiobadev_api_arqtool.Models.DespesaMensal", b =>
@@ -77,6 +103,61 @@ namespace caiobadev_api_arqtool.Migrations
                     b.HasKey("DespesaId");
 
                     b.ToTable("DespesasMensais");
+                });
+
+            modelBuilder.Entity("caiobadev_api_arqtool.Models.Etapa", b =>
+                {
+                    b.Property<int>("EtapaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Complexidade")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjetoId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("QuantidadeHoras")
+                        .HasColumnType("double");
+
+                    b.Property<double>("ValorDaEtapa")
+                        .HasColumnType("double");
+
+                    b.HasKey("EtapaId");
+
+                    b.HasIndex("ProjetoId");
+
+                    b.ToTable("Etapas");
+                });
+
+            modelBuilder.Entity("caiobadev_api_arqtool.Models.Projeto", b =>
+                {
+                    b.Property<int>("ProjetoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("QuantidadeAtividades")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QuantidadeEtapas")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("QuantidadeHoras")
+                        .HasColumnType("double");
+
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<double?>("ValorTotalDasEtapas")
+                        .HasColumnType("double");
+
+                    b.HasKey("ProjetoId");
+
+                    b.ToTable("Projetos");
                 });
 
             modelBuilder.Entity("caiobadev_api_arqtool.Models.ValorIdealHoraTrabalho", b =>
@@ -304,6 +385,28 @@ namespace caiobadev_api_arqtool.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("caiobadev_api_arqtool.Models.Atividade", b =>
+                {
+                    b.HasOne("caiobadev_api_arqtool.Models.Etapa", "Etapa")
+                        .WithMany("Atividades")
+                        .HasForeignKey("EtapaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Etapa");
+                });
+
+            modelBuilder.Entity("caiobadev_api_arqtool.Models.Etapa", b =>
+                {
+                    b.HasOne("caiobadev_api_arqtool.Models.Projeto", "Projeto")
+                        .WithMany("Etapas")
+                        .HasForeignKey("ProjetoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Projeto");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("caiobadev_api_arqtool.Identity.Services.Perfil", null)
@@ -353,6 +456,16 @@ namespace caiobadev_api_arqtool.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("caiobadev_api_arqtool.Models.Etapa", b =>
+                {
+                    b.Navigation("Atividades");
+                });
+
+            modelBuilder.Entity("caiobadev_api_arqtool.Models.Projeto", b =>
+                {
+                    b.Navigation("Etapas");
                 });
 #pragma warning restore 612, 618
         }
