@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using caiobadev_api_arqtool.Context;
 
@@ -10,9 +11,10 @@ using caiobadev_api_arqtool.Context;
 namespace caiobadev_api_arqtool.Migrations
 {
     [DbContext(typeof(ApiArqtoolContext))]
-    partial class ApiArqtoolContextModelSnapshot : ModelSnapshot
+    [Migration("20240618024228_calcularProjeto")]
+    partial class calcularProjeto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,9 +147,6 @@ namespace caiobadev_api_arqtool.Migrations
                     b.Property<int?>("Complexidade")
                         .HasColumnType("int");
 
-                    b.Property<int>("ComplexidadeMedia")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("DataFinal")
                         .HasColumnType("datetime(6)");
 
@@ -179,14 +178,8 @@ namespace caiobadev_api_arqtool.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<decimal?>("ValorTotalAmbientesMolhados")
-                        .HasColumnType("decimal(65,30)");
-
                     b.Property<double?>("ValorTotalDasEtapas")
                         .HasColumnType("double");
-
-                    b.Property<decimal?>("ValorTotalProjeto")
-                        .HasColumnType("decimal(65,30)");
 
                     b.HasKey("ProjetoId");
 

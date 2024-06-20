@@ -3349,11 +3349,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\caioa\\source\\repos\\api-arqtool\\api-arqtool\\api-arqtool.csproj",
+      "projectUniqueName": "C:\\Users\\caioa\\OneDrive\\Área de Trabalho\\tatakae\\arqtool\\backend-arqtool\\api-arqtool.csproj",
       "projectName": "api-arqtool",
-      "projectPath": "C:\\Users\\caioa\\source\\repos\\api-arqtool\\api-arqtool\\api-arqtool.csproj",
+      "projectPath": "C:\\Users\\caioa\\OneDrive\\Área de Trabalho\\tatakae\\arqtool\\backend-arqtool\\api-arqtool.csproj",
       "packagesPath": "C:\\Users\\caioa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\caioa\\source\\repos\\api-arqtool\\api-arqtool\\obj\\",
+      "outputPath": "C:\\Users\\caioa\\OneDrive\\Área de Trabalho\\tatakae\\arqtool\\backend-arqtool\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\caioa\\AppData\\Roaming\\NuGet\\NuGet.Config",

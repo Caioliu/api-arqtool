@@ -46,7 +46,7 @@
         }
 
         public void CalcularFaturamentoMensalMinimo() {
-            FaturamentoMensalMinimo = (FaturamentoMensalDesejado + ReservaFinanceira + TotalDespesasMensais) * PercentualReservaFerias + (FaturamentoMensalDesejado + ReservaFinanceira + TotalDespesasMensais);
+            FaturamentoMensalMinimo = (PercentualReservaFerias * (FaturamentoMensalDesejado + ReservaFinanceira + TotalDespesasMensais)) + (FaturamentoMensalDesejado + ReservaFinanceira + TotalDespesasMensais);
         }
 
         public void CalcularValorIdealHoraDeTrabalho() {

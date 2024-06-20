@@ -41,7 +41,7 @@
             if (Complexidade == 2) { return Valor + Valor * 0.05; }
             if (Complexidade == 3) { return Valor + Valor * 0.10; }
             if (Complexidade == 4) { return Valor + Valor * 0.15; }
-            return 0;
+            return Valor;
         }
     }
 }

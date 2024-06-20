@@ -38,8 +38,8 @@ namespace caiobadev_api_arqtool.Services {
 
             await _context.SaveChangesAsync();
         }
-        public async Task AtualizarValorTotalEPercentual() {
-            var despesasMensais = await GetDespesasMensais();
+        public async Task AtualizarValorTotalEPercentual(string usuarioId) {
+            var despesasMensais = await GetDespesasMensaisPorUsuario(usuarioId);
             foreach (var despesaMensal in despesasMensais) {
                 despesaMensal.CalcularValorTotal(despesasMensais.ToList());
                 despesaMensal.CalcularPorcentagemDoGastoTotal();

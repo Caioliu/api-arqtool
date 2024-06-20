@@ -10,6 +10,7 @@ namespace caiobadev_api_arqtool.DTOs.Mappings
             CreateMap<DespesaMensal, DespesaMensalDto>().ReverseMap();
             CreateMap<ValorIdealHoraTrabalho, ValorIdealHoraTrabalhoDto>().ReverseMap();
             CreateMap<Etapa, EtapaDTO>().ReverseMap();
+            CreateMap<Projeto, ProjetoInputDto>().ReverseMap();
         }
         
     }

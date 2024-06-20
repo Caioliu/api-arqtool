@@ -38,7 +38,7 @@ builder.Services.AddScoped<IUsuarioLogado, UsuarioLogado>();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c => {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiGestaoEstoque", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiArqTool", Version = "v1" });
 
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme() {
         Name = "Authorization",

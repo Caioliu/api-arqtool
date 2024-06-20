@@ -15,5 +15,10 @@
         [JsonIgnore]
         public Etapa? Etapa { get; set; }
 
+        public void CalcularValorAtividade(decimal? ValorIdealHoraTrabalho) {
+            this.Valor = (double)(ValorIdealHoraTrabalho * (decimal)DuracaoEmHoras);
+        }
+
     }
+
 }

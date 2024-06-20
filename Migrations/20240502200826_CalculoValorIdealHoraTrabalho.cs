@@ -13,8 +13,8 @@ namespace caiobadev_api_arqtool.Migrations
                 name: "ValoresIdeaisHoraTrabalho",
                 columns: table => new {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UsuarioId = table.Column<string>(type: "char(36)", nullable: false),
                     FaturamentoMensalDesejado = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     ReservaFinanceira = table.Column<decimal>(type: "decimal(65,30)", nullable: true),
                     TotalDespesasMensais = table.Column<decimal>(type: "decimal(65,30)", nullable: true),

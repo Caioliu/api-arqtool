@@ -73,6 +73,8 @@ namespace caiobadev_api_arqtool.Controllers {
         public async Task<IActionResult> PutDespesaMensal(int id, DespesaMensalDto despesaMensalDto) {
             try {
                 var despesaMensal = _mapper.Map<DespesaMensal>(despesaMensalDto);
+                var user = await _userManager.FindByEmailAsync(User.Identity.Name);
+
 
                 if (id != despesaMensal.DespesaId) {
                     return BadRequest(new { success = false, message = "ID da despesa mensal não corresponde." });
@@ -82,7 +84,7 @@ namespace caiobadev_api_arqtool.Controllers {
 
                 await _despesaMensalService.PutDespesaMensal(id, despesaMensal);
 
-                await _despesaMensalService.AtualizarValorTotalEPercentual();
+                await _despesaMensalService.AtualizarValorTotalEPercentual(user.Id);
 
                 return Ok(new { success = true, message = "Despesa mensal atualizada com sucesso." });
             } catch (Exception ex) {
@@ -95,6 +97,7 @@ namespace caiobadev_api_arqtool.Controllers {
         public async Task<ActionResult<IEnumerable<DespesaMensal>>> PostDespesasMensais(List<DespesaMensalDto> despesasMensaisDto) {
             try {
                 var despesasMensais = _mapper.Map<List<DespesaMensal>>(despesasMensaisDto);
+                var user = await _userManager.FindByEmailAsync(User.Identity.Name);
 
                 foreach (var despesaMensal in despesasMensais) {
                     despesaMensal.CalcularGastoAnual(); // Adicionar o cálculo do gasto anual
@@ -102,7 +105,7 @@ namespace caiobadev_api_arqtool.Controllers {
                     await _despesaMensalService.PostDespesaMensal(despesaMensal);
                 }
 
-                await _despesaMensalService.AtualizarValorTotalEPercentual();
+                await _despesaMensalService.AtualizarValorTotalEPercentual(user.Id);
 
                 return Ok(new { success = true, message = "Despesas mensais cadastradas com sucesso." });
             } catch (Exception ex) {
@@ -115,6 +118,8 @@ namespace caiobadev_api_arqtool.Controllers {
         public async Task<IActionResult> DeleteDespesaMensal(int id) {
             try {
                 var despesaMensal = await _despesaMensalService.GetDespesaMensal(id);
+                var user = await _userManager.FindByEmailAsync(User.Identity.Name);
+
 
                 if (despesaMensal == null) {
                     return NotFound(new { success = false, message = "Despesa mensal não encontrada." });
@@ -122,7 +127,7 @@ namespace caiobadev_api_arqtool.Controllers {
 
                 await _despesaMensalService.DeleteDespesaMensal(id);
 
-                await _despesaMensalService.AtualizarValorTotalEPercentual();
+                await _despesaMensalService.AtualizarValorTotalEPercentual(user.Id);
 
                 return Ok(new { success = true, message = "Despesa mensal deletada com sucesso." });
             } catch (Exception ex) {

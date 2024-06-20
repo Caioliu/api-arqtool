@@ -7,7 +7,7 @@ namespace caiobadev_api_arqtool.Services.Interfaces {
         public Task PutDespesaMensal(int id, DespesaMensal despesaMensal);
         public Task PostDespesaMensal(DespesaMensal despesaMensal);
         public Task DeleteDespesaMensal(int id);
-        public Task AtualizarValorTotalEPercentual();
+        public Task AtualizarValorTotalEPercentual(string usuarioId);
         public Task<IEnumerable<DespesaMensal>> GetDespesasMensaisPorUsuario(string usuarioId);
     }
 }
